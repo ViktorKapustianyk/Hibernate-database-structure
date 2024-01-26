@@ -36,3 +36,8 @@ build/
 
 ### Mac OS ###
 .DS_Store
+# Игнорировать папку .idea
+.idea/
+
+# Игнорировать папку META-INF
+META-INF/
