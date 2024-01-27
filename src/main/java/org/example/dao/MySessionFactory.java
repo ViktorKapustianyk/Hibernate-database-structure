@@ -10,6 +10,20 @@ import java.util.Properties;
 public class MySessionFactory {
     private static MySessionFactory instance;
     private final SessionFactory sessionFactory;
+    private final EntityActorDAO entityActorDAO;
+    private final EntityAddressDAO entityAddressDAO;
+    private final EntityCategoryDAO entityCategoryDAO;
+    private final EntityCityDAO entityCityDAO;
+    private final EntityCountryDAO entityCountryDAO;
+    private final EntityCustomerDAO entityCustomerDAO;
+    private final EntityFilmDAO entityFilmDAO;
+    private final EntityFilmTextDAO entityFilmTextDAO;
+    private final EntityInventoryDAO entityInventoryDAO;
+    private final EntityLanguageDAO entityLanguageDAO;
+    private final EntityPaymentDAO entityPaymentDAO;
+    private final EntityRentalDAO entityRentalDAO;
+    private final EntityStaffDAO entityStaffDAO;
+    private final EntityStoreDAO entityStoreDAO;
 
     private MySessionFactory() {
         Properties properties = new Properties();
@@ -42,6 +56,21 @@ public class MySessionFactory {
                 .addAnnotatedClass(EntityStaff.class)
                 .addAnnotatedClass(EntityStore.class)
                 .buildSessionFactory();
+
+        entityActorDAO = new EntityActorDAO(this);
+        entityAddressDAO = new EntityAddressDAO(this);
+        entityCategoryDAO = new EntityCategoryDAO(this);
+        entityCityDAO = new EntityCityDAO(this);
+        entityCountryDAO = new EntityCountryDAO(this);
+        entityCustomerDAO = new EntityCustomerDAO(this);
+        entityFilmDAO = new EntityFilmDAO(this);
+        entityFilmTextDAO = new EntityFilmTextDAO(this);
+        entityInventoryDAO = new EntityInventoryDAO(this);
+        entityLanguageDAO = new EntityLanguageDAO(this);
+        entityPaymentDAO = new EntityPaymentDAO(this);
+        entityRentalDAO = new EntityRentalDAO(this);
+        entityStaffDAO = new EntityStaffDAO(this);
+        entityStoreDAO = new EntityStoreDAO(this);
     }
 
     public static SessionFactory getSessionFactory() {
