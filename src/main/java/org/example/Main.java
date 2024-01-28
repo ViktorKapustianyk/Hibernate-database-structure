@@ -1,18 +1,24 @@
 package org.example;
 
-import org.example.dao.AbstractHibernateDao;
-import org.example.dao.EntityActorDAO;
-import org.example.dao.MySessionFactory;
-import org.example.entity.EntityActor;
-import org.hibernate.Session;
+import org.example.service.ServiceManager;
+import org.example.service.MySessionFactory;
+import org.example.entity.EntityCustomer;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        // Obtain SessionFactory
+        SessionFactory sessionFactory = MySessionFactory.getSessionFactory();
 
+        // Create Customer Service
+        ServiceManager serviceManager = new ServiceManager(sessionFactory);
+
+        // Create Customer with Dependencies
+//        EntityCustomer createdCustomer = serviceManager.createCustomerWithDependencies();
+//        // Use the Created Customer
+//        System.out.println("Created Customer: " + createdCustomer);
+
+        serviceManager.customerReturnInventoryToStore();
+        System.out.println("Customer return inventor");
     }
 }

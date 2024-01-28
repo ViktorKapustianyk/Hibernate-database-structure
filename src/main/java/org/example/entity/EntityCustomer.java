@@ -34,7 +34,7 @@ public class EntityCustomer {
 
     @OneToOne
     @JoinColumn(name = "address_id")
-    private EntityAddress addressId;
+    private EntityAddress address;
 
     @Column(name = "active")
     @Type(type = "org.hibernate.type.BooleanType")
