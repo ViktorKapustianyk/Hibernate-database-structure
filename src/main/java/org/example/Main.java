@@ -18,7 +18,11 @@ public class Main {
 //        // Use the Created Customer
 //        System.out.println("Created Customer: " + createdCustomer);
 
-        serviceManager.customerReturnInventoryToStore();
-        System.out.println("Customer return inventor");
+//        serviceManager.customerReturnInventoryToStore();
+//        System.out.println("Customer return inventor");
+
+
+        serviceManager.customerRentInventory();
+        System.out.println("Customer rent Film");
     }
 }

@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
@@ -86,6 +87,41 @@ public class ServiceManager {
             entityRentalDAO.create(rental);
 
             transaction.commit();
+        }
+    }
+
+    public void customerRentInventory(){
+        try (Session session = sessionFactory.getCurrentSession()) {
+            session.beginTransaction();
+
+            EntityFilm film = entityFilmDAO.getFirstAvailableFilmForRent();
+
+            EntityStore store = entityStoreDAO.getItems(0, 1).get(0);
+            EntityCustomer customer = entityCustomerDAO.getAnyCustomer();
+
+            EntityInventory inventory = new EntityInventory();
+            inventory.setFilm(film);
+            inventory.setStore(store);
+            entityInventoryDAO.create(inventory);
+
+            EntityStaff staff = store.getStaff();
+
+            EntityRental rental = new EntityRental();
+            rental.setRentalDate(LocalDateTime.now());
+            rental.setCustomer(customer);
+            rental.setInventory(inventory);
+            rental.setStaff(staff);
+            entityRentalDAO.create(rental);
+
+            EntityPayment payment = new EntityPayment();
+            payment.setCustomer(customer);
+            payment.setStaff(staff);
+            payment.setPaymentDate(LocalDateTime.now());
+            payment.setRental(rental);
+            payment.setAmount(BigDecimal.valueOf(55,77));
+            entityPaymentDAO.create(payment);
+
+            session.getTransaction().commit();
         }
     }
 }

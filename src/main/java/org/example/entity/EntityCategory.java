@@ -27,7 +27,7 @@ public class EntityCategory {
     @UpdateTimestamp
     private LocalDateTime lastUpdate;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name="film_category",
             joinColumns= @JoinColumn(name="category_id", referencedColumnName="category_id"),
             inverseJoinColumns= @JoinColumn(name="film_id", referencedColumnName="film_id") )
