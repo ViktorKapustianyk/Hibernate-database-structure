@@ -83,35 +83,4 @@ public class MySessionFactory {
         }
         return instance.sessionFactory;
     }
-
-//    public EntityCustomer createCustomerWithDependencies() {
-//        try (Session session = MySessionFactory.getSessionFactory().getCurrentSession()) {
-//
-//            session.beginTransaction();
-//            EntityStore store = entityStoreDAO.getItems(0, 1).get(0);
-//            EntityCity city = entityCityDAO.getByName("");
-//
-//            EntityAddress address = new EntityAddress();
-//            address.setAddress("Indept str, 48");
-//            address.setPhone("999-111-555");
-//            address.setCity(city);
-//            address.setDistrict("West");
-//
-//            entityAddressDAO.create(address);
-//
-//            EntityCustomer customer = new EntityCustomer();
-//            customer.setIsActive(true);
-//            customer.setAddress(address);
-//            customer.setStore(store);
-//            customer.setEmail("test@gmail.com");
-//            customer.setFirstName("Vitya");
-//            customer.setLastName("Kap");
-//
-//            entityCustomerDAO.create(customer);
-//
-//            session.getTransaction().commit();
-//
-//            return customer;
-//        }
-//    }
 }

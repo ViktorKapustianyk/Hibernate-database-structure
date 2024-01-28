@@ -1,5 +1,8 @@
 package org.example.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public enum FilmRating {
     PG("PG"),
     G("G"),
@@ -7,9 +10,13 @@ public enum FilmRating {
     PG_13("PG-13"),
     R("R");
 
-    private String value;
+    private final String value;
 
     FilmRating(String value) {
         this.value = value;
+    }
+
+    public String getValue() {
+        return value;
     }
 }
