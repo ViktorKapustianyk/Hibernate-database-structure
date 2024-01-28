@@ -81,7 +81,7 @@ public class ServiceManager {
             Transaction transaction = session.beginTransaction();
 
             EntityRental rental = entityRentalDAO.getAnyUnrenturnedRantal();
-            rental.setRentalDate(LocalDateTime.now());
+            rental.setReturnDate(LocalDateTime.now());
 
             entityRentalDAO.create(rental);
 
