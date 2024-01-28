@@ -64,13 +64,13 @@ public class EntityFilm {
     @UpdateTimestamp
     private LocalDateTime lastUpdate;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name="film_actor",
             joinColumns= @JoinColumn(name="film_id", referencedColumnName="film_id"),
             inverseJoinColumns= @JoinColumn(name="actor_id", referencedColumnName="actor_id") )
     private Set<EntityActor> actors;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(name="film_category",
             joinColumns= @JoinColumn(name="film_id", referencedColumnName="film_id"),
             inverseJoinColumns= @JoinColumn(name="category_id", referencedColumnName = "category_id") )

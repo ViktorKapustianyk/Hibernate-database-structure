@@ -1,12 +1,13 @@
 package org.example.dao;
 
+import lombok.Getter;
 import org.example.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 
 import java.util.Properties;
-
+@Getter
 public class MySessionFactory {
     private static MySessionFactory instance;
     private final SessionFactory sessionFactory;
@@ -57,20 +58,20 @@ public class MySessionFactory {
                 .addAnnotatedClass(EntityStore.class)
                 .buildSessionFactory();
 
-        entityActorDAO = new EntityActorDAO(this);
-        entityAddressDAO = new EntityAddressDAO(this);
-        entityCategoryDAO = new EntityCategoryDAO(this);
-        entityCityDAO = new EntityCityDAO(this);
-        entityCountryDAO = new EntityCountryDAO(this);
-        entityCustomerDAO = new EntityCustomerDAO(this);
-        entityFilmDAO = new EntityFilmDAO(this);
-        entityFilmTextDAO = new EntityFilmTextDAO(this);
-        entityInventoryDAO = new EntityInventoryDAO(this);
-        entityLanguageDAO = new EntityLanguageDAO(this);
-        entityPaymentDAO = new EntityPaymentDAO(this);
-        entityRentalDAO = new EntityRentalDAO(this);
-        entityStaffDAO = new EntityStaffDAO(this);
-        entityStoreDAO = new EntityStoreDAO(this);
+        entityActorDAO = new EntityActorDAO(sessionFactory);
+        entityAddressDAO = new EntityAddressDAO(sessionFactory);
+        entityCategoryDAO = new EntityCategoryDAO(sessionFactory);
+        entityCityDAO = new EntityCityDAO(sessionFactory);
+        entityCountryDAO = new EntityCountryDAO(sessionFactory);
+        entityCustomerDAO = new EntityCustomerDAO(sessionFactory);
+        entityFilmDAO = new EntityFilmDAO(sessionFactory);
+        entityFilmTextDAO = new EntityFilmTextDAO(sessionFactory);
+        entityInventoryDAO = new EntityInventoryDAO(sessionFactory);
+        entityLanguageDAO = new EntityLanguageDAO(sessionFactory);
+        entityPaymentDAO = new EntityPaymentDAO(sessionFactory);
+        entityRentalDAO = new EntityRentalDAO(sessionFactory);
+        entityStaffDAO = new EntityStaffDAO(sessionFactory);
+        entityStoreDAO = new EntityStoreDAO(sessionFactory);
     }
 
     public static SessionFactory getSessionFactory() {

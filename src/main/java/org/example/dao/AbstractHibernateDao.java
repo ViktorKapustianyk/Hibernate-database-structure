@@ -1,15 +1,16 @@
 package org.example.dao;
 
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
 import java.util.List;
 
 public abstract class AbstractHibernateDao<T> {
     private final Class<T> clazz;
-    private final MySessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
 
-    public AbstractHibernateDao(final Class<T> clazzToSet, MySessionFactory sessionFactory) {
+    public AbstractHibernateDao(final Class<T> clazzToSet, SessionFactory sessionFactory) {
         this.clazz = clazzToSet;
         this.sessionFactory = sessionFactory;
     }
@@ -49,6 +50,6 @@ public abstract class AbstractHibernateDao<T> {
     }
 
     protected Session getCurrentSession() {
-        return sessionFactory.getSessionFactory().getCurrentSession();
+        return sessionFactory.getCurrentSession();
     }
 }
