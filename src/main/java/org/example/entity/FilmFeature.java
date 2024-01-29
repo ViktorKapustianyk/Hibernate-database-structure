@@ -4,8 +4,6 @@ import lombok.Data;
 import lombok.Getter;
 
 import static java.util.Objects.isNull;
-
-
 @Getter
 public enum FilmFeature {
     TRAILERS("Trailers"),

@@ -1,9 +1,7 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -11,9 +9,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
-@Data
-@EqualsAndHashCode
-@ToString
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"store", "address"})
 @Entity
 @Table(name = "customer", schema = "movie")
 public class EntityCustomer {

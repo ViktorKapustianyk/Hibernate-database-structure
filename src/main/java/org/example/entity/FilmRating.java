@@ -2,7 +2,6 @@ package org.example.entity;
 
 import lombok.Getter;
 import lombok.Setter;
-
 @Getter
 public enum FilmRating {
     PG("PG"),

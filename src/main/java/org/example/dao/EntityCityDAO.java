@@ -1,6 +1,7 @@
 package org.example.dao;
 
 import org.example.entity.EntityCity;
+import org.example.entity.EntityStore;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
@@ -15,5 +16,11 @@ public class EntityCityDAO extends AbstractHibernateDao<EntityCity>{
         query.setMaxResults(1);
 
         return query.getSingleResult();
+    }
+
+    public EntityCity getFirstCity(){
+        return getCurrentSession().createQuery("SELECT c FROM EntityCity c", EntityCity.class)
+                .setMaxResults(1)
+                .uniqueResult();
     }
 }

@@ -1,7 +1,6 @@
 package org.example.service;
 
 import jakarta.transaction.Transactional;
-import lombok.Data;
 import org.example.dao.*;
 import org.example.entity.*;
 import org.hibernate.Session;
@@ -11,11 +10,8 @@ import org.hibernate.Transaction;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Year;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
-@Data
 public class ServiceManager {
     private final SessionFactory sessionFactory;
     private final EntityActorDAO entityActorDAO;
@@ -50,13 +46,14 @@ public class ServiceManager {
         this.entityStaffDAO = new EntityStaffDAO(sessionFactory);
         this.entityStoreDAO = new EntityStoreDAO(sessionFactory);
     }
-    @Transactional
+@Transactional
     public EntityCustomer createCustomerWithDependencies() {
-        try (Session session = sessionFactory.getCurrentSession()) {
+
+    try (Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
 
-            EntityStore store = entityStoreDAO.getItems(0, 1).get(0);
-            EntityCity city = entityCityDAO.getByName("Alvorada");
+            EntityStore store = entityStoreDAO.getFirstStore();
+            EntityCity city = entityCityDAO.getFirstCity();
 
             EntityAddress address = new EntityAddress();
             address.setAddress("Indept str, 48");
@@ -77,7 +74,6 @@ public class ServiceManager {
             entityCustomerDAO.create(customer);
 
             transaction.commit();
-
             return customer;
         }
     }

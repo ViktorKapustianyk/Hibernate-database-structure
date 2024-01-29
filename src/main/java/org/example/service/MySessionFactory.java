@@ -1,16 +1,12 @@
 package org.example.service;
 
-import lombok.Getter;
-import org.example.dao.*;
 import org.example.entity.*;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 
 import java.util.Properties;
 
-@Getter
 public class MySessionFactory {
     private static MySessionFactory instance;
     private final SessionFactory sessionFactory;

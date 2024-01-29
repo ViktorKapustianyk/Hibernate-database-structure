@@ -1,14 +1,14 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.Type;
 
-@Data
-@EqualsAndHashCode
-@ToString
+import java.util.Objects;
+
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"film"})
 @Entity
 @Table(name = "film_text", schema = "movie")
 public class EntityFilmText {

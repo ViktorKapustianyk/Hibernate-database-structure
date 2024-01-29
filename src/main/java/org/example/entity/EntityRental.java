@@ -1,18 +1,17 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
 
-@Data
-@EqualsAndHashCode
-@ToString
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"staff", "customer", "inventory"})
 @Entity
 @Table(name = "rental", schema = "movie")
 public class EntityRental {

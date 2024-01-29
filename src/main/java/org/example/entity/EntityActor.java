@@ -1,9 +1,7 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
@@ -12,9 +10,9 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-@Data
-@EqualsAndHashCode
-@ToString
+@Getter
+@Setter
+@EqualsAndHashCode(exclude = {"films"})
 @Entity
 @Table(name = "actor", schema = "movie")
 public class EntityActor {
