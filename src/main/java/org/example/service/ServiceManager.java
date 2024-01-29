@@ -1,5 +1,6 @@
 package org.example.service;
 
+import jakarta.transaction.Transactional;
 import lombok.Data;
 import org.example.dao.*;
 import org.example.entity.*;
@@ -9,6 +10,10 @@ import org.hibernate.Transaction;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.Year;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Data
 public class ServiceManager {
@@ -45,7 +50,7 @@ public class ServiceManager {
         this.entityStaffDAO = new EntityStaffDAO(sessionFactory);
         this.entityStoreDAO = new EntityStoreDAO(sessionFactory);
     }
-
+    @Transactional
     public EntityCustomer createCustomerWithDependencies() {
         try (Session session = sessionFactory.getCurrentSession()) {
             Transaction transaction = session.beginTransaction();
@@ -118,8 +123,43 @@ public class ServiceManager {
             payment.setStaff(staff);
             payment.setPaymentDate(LocalDateTime.now());
             payment.setRental(rental);
-            payment.setAmount(BigDecimal.valueOf(55,77));
-            entityPaymentDAO.create(payment);
+            payment.setAmount(BigDecimal.valueOf(55.77));
+            entityPaymentDAO.update(payment);
+
+            session.getTransaction().commit();
+        }
+    }
+
+    public void madeNewFilm(){
+        try (Session session = sessionFactory.getCurrentSession()) {
+            session.beginTransaction();
+
+            EntityLanguage language = entityLanguageDAO.getAnyLanguage();
+            Set<EntityCategory> categories = entityCategoryDAO.getFirstFourCategories();
+            Set<EntityActor> actors = entityActorDAO.getFirstFourActors();
+
+            EntityFilm film = new EntityFilm();
+            film.setActors(actors);
+            film.setRating(FilmRating.NC_17);
+            film.setSpecialFeatures(Set.of(FilmFeature.TRAILERS));
+            film.setLength((short)123);
+            film.setReplacementCost(BigDecimal.TEN);
+            film.setRentalRate(BigDecimal.ONE);
+            film.setLanguage(language);
+            film.setOriginalLanguage(language);
+            film.setDescription("new fantasy");
+            film.setTitle("new my-movie");
+            film.setRentalDuration((byte) 44);
+            film.setCategories(categories);
+            film.setReleaseYear(Year.now());
+            entityFilmDAO.create(film);
+
+            EntityFilmText filmText = new EntityFilmText();
+            filmText.setDescription("new fantasy");
+            filmText.setTitle("new my-movie");
+            filmText.setFilm(film);
+            filmText.setId(film.getId());
+            entityFilmTextDAO.create(filmText);
 
             session.getTransaction().commit();
         }

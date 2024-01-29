@@ -3,12 +3,14 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "store", schema = "movie")
 public class EntityStore {

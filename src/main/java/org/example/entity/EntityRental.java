@@ -3,6 +3,7 @@ package org.example.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
@@ -11,6 +12,7 @@ import java.util.Date;
 
 @Data
 @EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "rental", schema = "movie")
 public class EntityRental {

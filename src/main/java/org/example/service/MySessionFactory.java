@@ -14,21 +14,6 @@ import java.util.Properties;
 public class MySessionFactory {
     private static MySessionFactory instance;
     private final SessionFactory sessionFactory;
-//    private final EntityActorDAO entityActorDAO;
-//    private final EntityAddressDAO entityAddressDAO;
-//    private final EntityCategoryDAO entityCategoryDAO;
-//    private final EntityCityDAO entityCityDAO;
-//    private final EntityCountryDAO entityCountryDAO;
-//    private final EntityCustomerDAO entityCustomerDAO;
-//    private final EntityFilmDAO entityFilmDAO;
-//    private final EntityFilmTextDAO entityFilmTextDAO;
-//    private final EntityInventoryDAO entityInventoryDAO;
-//    private final EntityLanguageDAO entityLanguageDAO;
-//    private final EntityPaymentDAO entityPaymentDAO;
-//    private final EntityRentalDAO entityRentalDAO;
-//    private final EntityStaffDAO entityStaffDAO;
-//    private final EntityStoreDAO entityStoreDAO;
-
     private MySessionFactory() {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQLDialect");
@@ -44,7 +29,6 @@ public class MySessionFactory {
 //        properties.put("hibernate.connection.charSet", "UTF-8");
 
         sessionFactory = new Configuration()
-                .setProperties(properties)
                 .addAnnotatedClass(EntityActor.class)
                 .addAnnotatedClass(EntityAddress.class)
                 .addAnnotatedClass(EntityCategory.class)
@@ -59,22 +43,8 @@ public class MySessionFactory {
                 .addAnnotatedClass(EntityRental.class)
                 .addAnnotatedClass(EntityStaff.class)
                 .addAnnotatedClass(EntityStore.class)
+                .setProperties(properties)
                 .buildSessionFactory();
-
-//        entityActorDAO = new EntityActorDAO(sessionFactory);
-//        entityAddressDAO = new EntityAddressDAO(sessionFactory);
-//        entityCategoryDAO = new EntityCategoryDAO(sessionFactory);
-//        entityCityDAO = new EntityCityDAO(sessionFactory);
-//        entityCountryDAO = new EntityCountryDAO(sessionFactory);
-//        entityCustomerDAO = new EntityCustomerDAO(sessionFactory);
-//        entityFilmDAO = new EntityFilmDAO(sessionFactory);
-//        entityFilmTextDAO = new EntityFilmTextDAO(sessionFactory);
-//        entityInventoryDAO = new EntityInventoryDAO(sessionFactory);
-//        entityLanguageDAO = new EntityLanguageDAO(sessionFactory);
-//        entityPaymentDAO = new EntityPaymentDAO(sessionFactory);
-//        entityRentalDAO = new EntityRentalDAO(sessionFactory);
-//        entityStaffDAO = new EntityStaffDAO(sessionFactory);
-//        entityStoreDAO = new EntityStoreDAO(sessionFactory);
     }
 
     public static SessionFactory getSessionFactory() {

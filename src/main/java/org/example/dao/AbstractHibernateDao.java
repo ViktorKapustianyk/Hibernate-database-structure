@@ -36,8 +36,7 @@ public abstract class AbstractHibernateDao<T> {
     }
 
     public T update(final T entity) {
-        getCurrentSession().saveOrUpdate(entity);
-        return entity;
+        return (T) getCurrentSession().merge(entity);
     }
 
     public void delete(final T entity) {

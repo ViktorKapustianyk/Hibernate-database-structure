@@ -13,16 +13,17 @@ public class Main {
         // Create Customer Service
         ServiceManager serviceManager = new ServiceManager(sessionFactory);
 
-        // Create Customer with Dependencies
+//         Create Customer with Dependencies
 //        EntityCustomer createdCustomer = serviceManager.createCustomerWithDependencies();
-//        // Use the Created Customer
 //        System.out.println("Created Customer: " + createdCustomer);
 
 //        serviceManager.customerReturnInventoryToStore();
 //        System.out.println("Customer return inventor");
 
+//        serviceManager.customerRentInventory();
+//        System.out.println("Customer rent Film");
 
-        serviceManager.customerRentInventory();
-        System.out.println("Customer rent Film");
+//        serviceManager.madeNewFilm();
+//        System.out.println("Production has made new Film");
     }
 }
