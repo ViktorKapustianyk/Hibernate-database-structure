@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/movie</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">root</property>
+    <property name="hibernate.show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.hbm2ddl.auto">validate</property>
+
+    <!-- Маппинги для каждого класса сущности -->
+    <mapping class="org.example.entity.EntityActor"/>
+    <mapping class="org.example.entity.EntityAddress"/>
+    <mapping class="org.example.entity.EntityCategory"/>
+    <mapping class="org.example.entity.EntityCity"/>
+    <mapping class="org.example.entity.EntityCountry"/>
+    <mapping class="org.example.entity.EntityCustomer"/>
+    <mapping class="org.example.entity.EntityFilm"/>
+    <mapping class="org.example.entity.EntityFilmText"/>
+    <mapping class="org.example.entity.EntityInventory"/>
+    <mapping class="org.example.entity.EntityLanguage"/>
+    <mapping class="org.example.entity.EntityPayment"/>
+    <mapping class="org.example.entity.EntityRental"/>
+    <mapping class="org.example.entity.EntityStaff"/>
+    <mapping class="org.example.entity.EntityStore"/>
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
